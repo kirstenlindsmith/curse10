@@ -2,17 +2,9 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')
-const session = require('express-session')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const db = require('./db')
-const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 1337
 const app = express()
 module.exports = app
-
-if (process.env.NODE_ENV === 'test') {
-  after('close the session store', () => sessionStore.stopExpiringSessions())
-}
 
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
@@ -26,16 +18,6 @@ const createApp = () => {
 
   // compression middleware
   app.use(compression())
-
-  // session middleware with passport
-  app.use(
-    session({
-      secret: process.env.SESSION_SECRET || 'Kirsten is awesome',
-      store: sessionStore,
-      resave: false,
-      saveUninitialized: false
-    })
-  )
 
   // api routes
   app.use('/api', require('./api'))
@@ -77,11 +59,7 @@ const startListening = () => {
   )
 }
 
-const syncDb = () => db.sync()
-
 async function bootApp() {
-  await sessionStore.sync()
-  await syncDb()
   await createApp()
   await startListening()
 }
