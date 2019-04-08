@@ -1,21 +1,82 @@
-body {
-  font-family: sans-serif;
+html {
+  cursor: url(assets/cursor.png), auto;
+}
+
+#nav img {
+  height: 3rem;
+  margin-top: 0.5rem;
 }
 
 a {
-  text-decoration: none;
+  cursor: url(assets/cursorHover.png), auto;
 }
 
-label {
-  display: block;
+#nav a {
+  color: black;
+  cursor: url(assets/cursorHover.png), auto;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
+p {
+  text-align: justify;
+  font-family: 'Crimson Text', serif;
+  font-size: 18px;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+p a {
+  color: #db2b95;
+}
+
+a:hover {
+  color: #ff63c1;
+}
+
+p.title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+}
+
+.title {
+  font-family: 'Dancing Script', cursive;
+}
+
+#home-div h1 {
+  margin-bottom: -3%;
+  margin-top: 0;
+}
+
+#home-div {
+  overflow: scroll;
+  max-width: 40%;
+  max-height: 75vh;
+  margin-right: 5%;
+  margin-top: 5%;
+  float: right;
+  left: 500px;
+  box-shadow: 7px 7px 20px rgb(129, 129, 129);
+}
+
+#homeContents {
+  padding: 5%;
+  padding-bottom: 7%;
+}
+
+h3.title {
+  margin: auto;
+  /* padding: 0; */
+  padding-bottom: 8%;
+  padding-right: -2%;
+}
+
+#home-div p {
+  width: 90%;
+  margin: 5%;
+}
+
+img.home-img {
+  position: fixed;
+  max-width: 50%;
+  height: auto;
+  float: left;
+  top: 18%;
+  left: 3%;
 }

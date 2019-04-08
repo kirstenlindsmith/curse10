@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "curse10",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Personal website",
   "engines": {
     "node": ">= 7.0.0"
   },
@@ -34,7 +34,7 @@
       "git add"
     ]
   },
-  "author": "Fullstack Academy of Code",
+  "author": "Kirsten Lindsmith",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.15.3",

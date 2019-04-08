@@ -1,17 +1,15 @@
-# Boilermaker
+# curse10.dev
 
-_Good things come in pairs_
-
-Looking to mix up a backend with express/sequelize and a frontend with react/redux? That's `boilermaker`!
-
-Follow along with the workshop to make your own! This canonical version can serve as a reference, or a starting point all on its own.
+\_Peronal Website
 
 ## Setup
 
-To use this boilerplate, you'll need to take the following steps:
+1.  `npm install`
+2.  `npm run start-dev`
 
-* Don't fork or clone this repo! Instead, create a new, empty directory on your machine and `git init` (or create an empty repo on Github and clone it to your local machine)
-* Run the following commands:
+To run the server and/or webpack separately, run `npm run start-server` or `npm run build-client`
+
+---
 
 ```
 git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
