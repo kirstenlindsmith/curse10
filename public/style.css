@@ -16,6 +16,11 @@ a {
   cursor: url(assets/cursorHover.png), auto;
 }
 
+#logo {
+  display: flex;
+  flex-direction: column;
+}
+
 p {
   text-align: justify;
   font-family: 'Crimson Text', serif;

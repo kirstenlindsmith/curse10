@@ -2,15 +2,17 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const Navbar = () => (
-  <div className="navbar-fixed" id="nav">
-    <nav className="white">
-      <div className="navWrapper">
-        <div className="container">
-          <a href="/" className="brand-logo">
-            <img src="/assets/kirstenLogo.png" />
-          </a>
+  // <div className="navbar-fixed" id="nav">
+  <div id="nav">
+    {/* <nav className="white"> */}
+    <div className="navWrapper">
+      <div className="container">
+        <a href="/" id="logo">
+          <img id="name" src="/assets/kirstenLogo.png" />
+          <img id="definition" src="/assets/definition.png" />
+        </a>
 
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+        {/* <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -25,10 +27,10 @@ const Navbar = () => (
             <li>
               <a href="https://kirstenlindsmith.wordpress.com/">Autism Blog</a>
             </li>
-          </ul>
-        </div>
+          </ul> */}
       </div>
-    </nav>
+    </div>
+    {/* </nav> */}
   </div>
 )
 
