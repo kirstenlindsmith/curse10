@@ -40,8 +40,8 @@ nav.bm-item-list {
   background: #e48fc2;
   display: flex;
   flex-direction: column;
-  height: 380px !important;
-  width: 400px !important;
+  height: 450px !important;
+  width: 475px !important;
   margin-top: -50px;
   overflow-y: hidden !important;
   border-radius: 50%;
@@ -73,7 +73,7 @@ nav.bm-item-list {
 
 .bm-item {
   display: inline-block;
-  margin-left: 110px !important;
+  margin-left: 100px !important;
   margin-top: 10px !important;
 }
 

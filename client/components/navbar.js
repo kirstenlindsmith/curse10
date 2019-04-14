@@ -22,7 +22,7 @@ const Navbar = () => (
         </li>
         <br />
         <li>
-          <Link to="/projects">Projects</Link>
+          <Link to="/projects">Code Projects</Link>
         </li>
         <br />
         <li>
@@ -35,6 +35,12 @@ const Navbar = () => (
         <br />
         <li>
           <a href="https://kirstenlindsmith.wordpress.com/">Autism Blog</a>
+        </li>
+        <br />
+        <li>
+          <a href="mailto:kirstenlindsmith@gmail.com?subject=Curse10.dev Contact">
+            Contact
+          </a>
         </li>
       </ul>
     </Burger>
