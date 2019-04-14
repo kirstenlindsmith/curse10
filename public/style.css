@@ -1,10 +1,125 @@
 html {
   cursor: url(assets/cursor.png), auto;
+  overflow-x: hidden;
+  font-family: 'Crimson Text', serif;
 }
 
-#nav img {
-  height: 3rem;
+button {
+  cursor: url(assets/cursorHover.png), auto !important;
+}
+
+/* #buttonLocation {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: 1px solid red;
+  cursor: url(assets/cursorHover.png), auto !important;
+} */
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+  border-radius: 10%;
+  height: 3px !important;
+}
+
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+nav.bm-item-list {
+  background: #e48fc2;
+  display: flex;
+  flex-direction: column;
+  height: 450px !important;
+  width: 475px !important;
+  margin-top: -50px;
+  overflow-y: hidden !important;
+  border-radius: 50%;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background: rbg(0, 0, 0, 0);
+  padding: 2em 1em 2em;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  height: 400px !important;
+}
+
+.bm-morph-shape {
+  fill: white;
+  height: 400px !important;
+  opacity: 0 !important;
+}
+
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.bm-item {
+  display: inline-block;
+  margin-left: 100px !important;
+  margin-top: 10px !important;
+}
+
+.bm-item a:hover {
+  background: rgb(0, 0, 0, 0) !important;
+  font-family: 'Dancing Script', cursive;
+  text-transform: lowercase;
+  cursor: url(assets/cursorHover.png), auto !important;
+}
+
+.bm-item:focus {
+  border: none;
+  outline: 0;
+}
+
+.bm-overlay {
+  background: #e48fc2;
+}
+
+#nav {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  cursor: url(assets/cursor.png), auto !important;
+}
+
+#nav .navWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#logo {
+  display: flex;
+  flex-direction: column;
+  margin-left: -4rem;
+}
+
+#name {
+  max-width: 16rem;
   margin-top: 0.5rem;
+}
+
+#definition {
+  height: 2.5rem !important;
+  width: 37rem;
+  margin: 0 !important;
 }
 
 a {
@@ -27,7 +142,7 @@ p a {
 }
 
 a:hover {
-  color: #ff63c1;
+  color: #a0236d;
 }
 
 p.title {
@@ -62,7 +177,6 @@ p.title {
 
 h3.title {
   margin: auto;
-  /* padding: 0; */
   padding-bottom: 8%;
   padding-right: -2%;
 }
@@ -79,58 +193,4 @@ img.home-img {
   float: left;
   top: 18%;
   left: 3%;
-}
-
-.warper {
-  width: 100%;
-  padding: 20px 5%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  border: 1px #cfcece dashed;
-}
-
-.modal {
-  font-size: 12px;
-}
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
-  padding: 5px;
-}
-.modal > .content {
-  width: 100%;
-  padding: 10px 5px;
-}
-.modal > .actions {
-  margin: auto;
-}
-.modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
-  text-align: center;
-}
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
-}
-
-#modalButton {
-  position: fixed;
-  top: 10%;
-}
-
-div > img.hover {
-  cursor: url(assets/cursorHover.png), auto !important;
 }

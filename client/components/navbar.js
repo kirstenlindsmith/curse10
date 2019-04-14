@@ -1,34 +1,49 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {elastic as Burger} from 'react-burger-menu'
 
 const Navbar = () => (
-  <div className="navbar-fixed" id="nav">
-    <nav className="white">
+  <div id="entireNav">
+    <div id="nav">
       <div className="navWrapper">
         <div className="container">
-          <a href="/" className="brand-logo">
-            <img src="/assets/kirstenLogo.png" />
+          <a href="/" id="logo">
+            <img id="name" src="/assets/kirstenLogo.png" />
+            <img id="definition" src="/assets/definition.png" />
           </a>
-
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/projects">Projects</Link>
-            </li>
-            <li>
-              <a href="https://kirstenlindsmith.pixpa.com/art-portfolio">
-                Graphics
-              </a>
-            </li>
-            <li>
-              <a href="https://kirstenlindsmith.wordpress.com/">Autism Blog</a>
-            </li>
-          </ul>
         </div>
       </div>
-    </nav>
+    </div>
+
+    <Burger right id="burger">
+      <ul id="menu">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <br />
+        <li>
+          <Link to="/projects">Code Projects</Link>
+        </li>
+        <br />
+        <li>
+          <a href="https://kirstenlindsmith.pixpa.com/art-portfolio">Art</a>
+        </li>
+        <br />
+        <li>
+          <a href="https://kirstenlindsmith.pixpa.com/">Graphics</a>
+        </li>
+        <br />
+        <li>
+          <a href="https://kirstenlindsmith.wordpress.com/">Autism Blog</a>
+        </li>
+        <br />
+        <li>
+          <a href="mailto:kirstenlindsmith@gmail.com?subject=Curse10.dev Contact">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </Burger>
   </div>
 )
 
