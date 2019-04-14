@@ -1,6 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {elastic as Burger} from 'react-burger-menu'
+import Hamburger from './hamburger'
 
 const Navbar = () => (
   <div id="entireNav">
@@ -15,35 +14,7 @@ const Navbar = () => (
       </div>
     </div>
 
-    <Burger right id="burger">
-      <ul id="menu">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <br />
-        <li>
-          <Link to="/projects">Code Projects</Link>
-        </li>
-        <br />
-        <li>
-          <a href="https://kirstenlindsmith.pixpa.com/art-portfolio">Art</a>
-        </li>
-        <br />
-        <li>
-          <a href="https://kirstenlindsmith.pixpa.com/">Graphics</a>
-        </li>
-        <br />
-        <li>
-          <a href="https://kirstenlindsmith.wordpress.com/">Autism Blog</a>
-        </li>
-        <br />
-        <li>
-          <a href="mailto:kirstenlindsmith@gmail.com?subject=Curse10.dev Contact">
-            Contact
-          </a>
-        </li>
-      </ul>
-    </Burger>
+    <Hamburger />
   </div>
 )
 
