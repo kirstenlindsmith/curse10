@@ -1,6 +1,7 @@
 html {
   cursor: url(assets/cursor.png), auto;
   overflow-x: hidden;
+  font-family: 'Crimson Text', serif;
 }
 
 button {
@@ -27,6 +28,8 @@ button {
 
 .bm-burger-bars {
   background: #373a47;
+  border-radius: 10%;
+  height: 3px !important;
 }
 
 .bm-burger-bars-hover {
@@ -34,9 +37,60 @@ button {
 }
 
 nav.bm-item-list {
-  background: #db5ea8;
+  background: #e48fc2;
   display: flex;
   flex-direction: column;
+  height: 380px !important;
+  width: 400px !important;
+  margin-top: -50px;
+  overflow-y: hidden !important;
+  border-radius: 50%;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background: rbg(0, 0, 0, 0);
+  padding: 2em 1em 2em;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  height: 400px !important;
+}
+
+.bm-morph-shape {
+  fill: white;
+  height: 400px !important;
+  opacity: 0 !important;
+}
+
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.bm-item {
+  display: inline-block;
+  margin-left: 110px !important;
+  margin-top: 10px !important;
+}
+
+.bm-item a:hover {
+  background: rgb(0, 0, 0, 0) !important;
+  font-family: 'Dancing Script', cursive;
+  text-transform: lowercase;
+  cursor: url(assets/cursorHover.png), auto !important;
+}
+
+.bm-item:focus {
+  border: none;
+  outline: 0;
+}
+
+.bm-overlay {
+  background: #e48fc2;
 }
 
 #nav {

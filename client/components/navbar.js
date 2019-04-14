@@ -15,27 +15,24 @@ const Navbar = () => (
       </div>
     </div>
 
-    <div id="buttonLocation" />
-
-    <div id="menuButton">
-      <span />
-      <span />
-      <span />
-    </div>
-
     <Burger right id="burger">
       <ul id="menu">
         <li>
           <Link to="/">Home</Link>
         </li>
+        <br />
         <li>
           <Link to="/projects">Projects</Link>
         </li>
+        <br />
         <li>
-          <a href="https://kirstenlindsmith.pixpa.com/art-portfolio">
-            Graphics
-          </a>
+          <a href="https://kirstenlindsmith.pixpa.com/art-portfolio">Art</a>
         </li>
+        <br />
+        <li>
+          <a href="https://kirstenlindsmith.pixpa.com/">Graphics</a>
+        </li>
+        <br />
         <li>
           <a href="https://kirstenlindsmith.wordpress.com/">Autism Blog</a>
         </li>
