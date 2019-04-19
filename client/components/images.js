@@ -5,13 +5,10 @@ import Modal from '@material-ui/core/Modal'
 import SingleImage from './singleImage'
 import {withStyles} from '@material-ui/core/styles'
 
-let imageHeight
-
 class Images extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      pageType: props.pageType,
       isImageModalOpen: false,
       currentImage: {},
       artImages: [],
@@ -31,10 +28,10 @@ class Images extends Component {
     })
   }
 
-  componentDidUpdate() {
-    imageHeight = this.state.currentImage.height
-    if (imageHeight > 600) imageHeight = 800
-    if (imageHeight < 600) imageHeight = 600
+  componentDidUpdate(prevProps) {
+    if (prevProps.pageType !== this.props.pageType) {
+      this.grid.updateLayout()
+    }
   }
 
   onImageClick(event, images) {
@@ -68,8 +65,11 @@ class Images extends Component {
   }
 
   render() {
-    const {pageType, artImages, graphicImages} = this.state
-    const {classes} = this.props
+    const {artImages, graphicImages} = this.state
+    const {classes, pageType} = this.props
+
+    console.log('pageType in render:', this.props.pageType)
+    console.log('does pageType === art?', pageType === 'art')
 
     return (
       <React.Fragment>
@@ -87,7 +87,11 @@ class Images extends Component {
         </Modal>
 
         {pageType === 'art' ? (
-          <StackGrid columnWidth="25%" monitorImagesLoaded="true">
+          <StackGrid
+            columnWidth="25%"
+            monitorImagesLoaded="true"
+            gridRef={grid => (this.grid = grid)}
+          >
             {artImages.map(image => (
               <div key={image.id}>
                 <img
@@ -99,7 +103,7 @@ class Images extends Component {
             ))}
           </StackGrid>
         ) : (
-          <StackGrid columnWidth="20%">
+          <StackGrid columnWidth="20%" gridRef={grid => (this.grid = grid)}>
             {graphicImages.map(image => (
               <div key={image.id}>
                 <img
