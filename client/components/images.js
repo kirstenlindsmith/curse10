@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import StackGrid from 'react-stack-grid'
 import {art, graphics} from '../utils'
-// import Modal from './modal'
 import Modal from '@material-ui/core/Modal'
 import SingleImage from './singleImage'
 import {withStyles} from '@material-ui/core/styles'
-import sizeMe from 'react-sizeme'
+
+let imageHeight
 
 class Images extends Component {
   constructor(props) {
@@ -29,6 +29,12 @@ class Images extends Component {
       artImages,
       graphicImages
     })
+  }
+
+  componentDidUpdate() {
+    imageHeight = this.state.currentImage.height
+    if (imageHeight > 600) imageHeight = 800
+    if (imageHeight < 600) imageHeight = 600
   }
 
   onImageClick(event, images) {
@@ -64,7 +70,6 @@ class Images extends Component {
   render() {
     const {pageType, artImages, graphicImages} = this.state
     const {classes} = this.props
-    const {width} = this.props.size
 
     return (
       <div className="gallery">
@@ -74,7 +79,11 @@ class Images extends Component {
           onClose={this.toggleModal}
           onClick={this.toggleModal}
         >
-          <SingleImage image={this.state.currentImage} />
+          <SingleImage
+            image={this.state.currentImage}
+            height={this.state.currentImage.height}
+            width={this.state.currentImage.width}
+          />
         </Modal>
         {pageType === 'art' ? (
           <StackGrid columnWidth="25%" monitorImagesLoaded="true">
@@ -106,16 +115,17 @@ class Images extends Component {
   }
 }
 
-const styles = () => ({
-  modal: {
-    maxHeight: 500,
-    maxWidth: 500,
-    margin: 'auto'
+const styles = () => {
+  return {
+    modal: {
+      overflow: 'hidden',
+      // marginLeft: '20vw',
+      // marginTop: '15vh'
+      height: imageHeight,
+      margin: 'auto'
+    }
   }
-})
+}
 
-const sizeMeConfig = {monitorWidth: true}
-const sizeMeHOC = sizeMe(sizeMeConfig)
-
-export default withStyles(styles)(sizeMeHOC(Images))
+export default withStyles(styles)(Images)
 //passes a 'classes' object to props; keys are based on given styles
