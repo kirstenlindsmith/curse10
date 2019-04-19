@@ -13,9 +13,9 @@ const Home = () => (
       </p>
 
       <p>
-        I'm a graphic designer who fell in love with code. I have a natural love
-        of detail and systemizing, with an appreciation for creating
-        maintainable code, and beautiful UX.
+        I'm a graphic designer who fell in love with programming. I have a
+        natural love of detail and systemizing, and a deep appreciation for
+        creating maintainable code with beautiful UX.
       </p>
 
       <p>
