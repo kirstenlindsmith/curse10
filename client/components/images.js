@@ -72,7 +72,7 @@ class Images extends Component {
     const {classes} = this.props
 
     return (
-      <div className="gallery">
+      <React.Fragment>
         <Modal
           classes={{root: classes.modal}}
           open={this.state.isImageModalOpen}
@@ -85,6 +85,7 @@ class Images extends Component {
             width={this.state.currentImage.width}
           />
         </Modal>
+
         {pageType === 'art' ? (
           <StackGrid columnWidth="25%" monitorImagesLoaded="true">
             {artImages.map(image => (
@@ -110,7 +111,7 @@ class Images extends Component {
             ))}
           </StackGrid>
         )}
-      </div>
+      </React.Fragment>
     )
   }
 }
@@ -118,11 +119,8 @@ class Images extends Component {
 const styles = () => {
   return {
     modal: {
-      overflow: 'hidden',
-      // marginLeft: '20vw',
-      // marginTop: '15vh'
-      height: imageHeight,
-      margin: 'auto'
+      display: 'flex',
+      justifyContent: 'center'
     }
   }
 }
