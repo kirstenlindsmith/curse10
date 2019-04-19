@@ -24,6 +24,6 @@ before_deploy:
 deploy:
   skip_cleanup: true # prevents travis from deleting the build
   provider: heroku
-  app: YOUR-HEROKU-APP-NAME-HERE # see README
+  app: curse10 # see README
   api_key:
 #     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
