@@ -28,12 +28,6 @@ class Images extends Component {
     })
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.pageType !== this.props.pageType) {
-      this.grid.updateLayout()
-    }
-  }
-
   onImageClick(event, images) {
     let currentImage = images.filter(image => {
       if (event.target.src.includes(image.url)) return image
@@ -68,9 +62,6 @@ class Images extends Component {
     const {artImages, graphicImages} = this.state
     const {classes, pageType} = this.props
 
-    console.log('pageType in render:', this.props.pageType)
-    console.log('does pageType === art?', pageType === 'art')
-
     return (
       <React.Fragment>
         <Modal
@@ -86,13 +77,9 @@ class Images extends Component {
           />
         </Modal>
 
-        {pageType === 'art' ? (
-          <StackGrid
-            columnWidth="25%"
-            monitorImagesLoaded="true"
-            gridRef={grid => (this.grid = grid)}
-          >
-            {artImages.map(image => (
+        <StackGrid columnWidth="25%" monitorImagesLoaded="true">
+          {pageType === 'art' &&
+            artImages.map(image => (
               <div key={image.id}>
                 <img
                   src={image.url}
@@ -101,10 +88,8 @@ class Images extends Component {
                 />
               </div>
             ))}
-          </StackGrid>
-        ) : (
-          <StackGrid columnWidth="20%" gridRef={grid => (this.grid = grid)}>
-            {graphicImages.map(image => (
+          {pageType === 'graphics' &&
+            graphicImages.map(image => (
               <div key={image.id}>
                 <img
                   src={image.url}
@@ -113,8 +98,7 @@ class Images extends Component {
                 />
               </div>
             ))}
-          </StackGrid>
-        )}
+        </StackGrid>
       </React.Fragment>
     )
   }
