@@ -33,11 +33,11 @@ const Hamburger = () => {
         </li>
         <br />
         <li>
-          <a href="https://kirstenlindsmith.pixpa.com/art-portfolio">Art</a>
+          <Link to="/art">Art</Link>
         </li>
         <br />
         <li>
-          <a href="https://kirstenlindsmith.pixpa.com/">Graphics</a>
+          <Link to="/graphics">Graphics</Link>
         </li>
         <br />
         <li>

@@ -345,3 +345,11 @@ img.home-img {
   background-color: rgb(243, 102, 102);
   color: white;
 }
+
+.gallery_item {
+  max-width: 100%;
+}
+
+.modalBackdrop {
+  border: 2px solid red;
+}
