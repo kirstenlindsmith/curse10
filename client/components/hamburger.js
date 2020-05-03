@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { elastic as Burger } from 'react-burger-menu'
+import {Link} from 'react-router-dom'
+import {elastic as Burger} from 'react-burger-menu'
 
 // const contactMethods = [
 //   {
