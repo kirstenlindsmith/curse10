@@ -8,30 +8,31 @@ const Home = () => (
       <img className="home-img" src="/assets/kirsten.png" />
       <br />
       <p>
-        I'm Kirsten (pronounced "curse ten"), a full stack software engineer and
-        developer.
+        Hi! My name is Kirsten (pronounced "curse ten"), and I'm a full stack
+        software developer.
       </p>
 
       <p>
-        I'm a graphic designer who fell in love with programming. I have a
-        natural love of detail and systemizing, and a deep appreciation for
-        creating maintainable code with beautiful UX.
+        Once upon a time, I was a special ed teacher and graphic designer who
+        fell in love with programming. I have a natural love of detail, a deep
+        appreciation for beautiful things, and an obsessive need to organize the
+        world around me, so learning to code was like meeting a soulmate.
       </p>
 
       <p>
-        I specialize in full-stack app development, including but not limited
-        to: Node.js, React, Redux, Express, PostgreSQL, HTML & CSS.
+        I have a full stack background, including but not limited to: Node,
+        Typescript, Express, PostgreSQL, React, HTML & CSS.
       </p>
 
       <p>
-        Being both a graphic designer and developer allows me to make sure no
-        detail is lost in translation. When I draw a mockup of an app, I’m
-        already planning how to build it.
+        Being both an artist and developer allows me to make sure no detail is
+        lost in translation. My true love is frontend web development, so when I
+        draw a mockup of an app, I’m already planning how to build it.
       </p>
 
       <p>
-        In my spare time I enjoy both making and playing video games, making
-        art, writing about autism, and reading all types of fantasy.
+        In my non-coding time I play video games, make art, write and speak
+        about autism, and read all types of fantasy.
       </p>
 
       <p>

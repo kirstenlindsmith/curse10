@@ -1,24 +1,24 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {elastic as Burger} from 'react-burger-menu'
+import { Link } from 'react-router-dom'
+import { elastic as Burger } from 'react-burger-menu'
 
-const contactMethods = [
-  {
-    id: 1,
-    name: 'Github',
-    url: 'https://github.com/kirstenlindsmith'
-  },
-  {
-    id: 2,
-    name: 'LinkedIn',
-    url: 'https://linkedin.com/in/kirstenlindsmith'
-  },
-  {
-    id: 3,
-    name: 'AngelList',
-    url: 'https://angel.co/kirsten-lindsmith'
-  }
-]
+// const contactMethods = [
+//   {
+//     id: 1,
+//     name: 'Github',
+//     url: 'https://github.com/kirstenlindsmith'
+//   },
+//   {
+//     id: 2,
+//     name: 'LinkedIn',
+//     url: 'https://linkedin.com/in/kirstenlindsmith'
+//   },
+//   {
+//     id: 3,
+//     name: 'AngelList',
+//     url: 'https://angel.co/kirsten-lindsmith'
+//   }
+// ]
 
 const Hamburger = () => {
   return (
