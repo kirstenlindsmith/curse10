@@ -1,6 +1,6 @@
 # curse10.dev
 
-\_Peronal Website
+\_Personal Website
 
 ## Setup
 

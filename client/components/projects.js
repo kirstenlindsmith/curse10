@@ -1,11 +1,11 @@
 import React from 'react'
-import Popup from 'reactjs-popup'
+// import Popup from 'reactjs-popup'
 
-const modalContentStyle = {
-  maxWidth: '600px',
-  width: '90%',
-  color: 'black'
-}
+// const modalContentStyle = {
+//   maxWidth: '600px',
+//   width: '90%',
+//   color: 'black'
+// }
 
 const Projects = () => (
   <div className="center container">

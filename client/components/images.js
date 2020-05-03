@@ -1,107 +1,76 @@
-import React, {Component} from 'react'
-import StackGrid from 'react-stack-grid'
-import {art, graphics} from '../utils'
-import Modal from '@material-ui/core/Modal'
+import React from 'react'
+
+//helpers
+import {art, graphics, shuffle} from '../utils'
+
+//components
 import SingleImage from './singleImage'
+import StackGrid from 'react-stack-grid'
+import Modal from '@material-ui/core/Modal'
+
+//styles
 import {withStyles} from '@material-ui/core/styles'
 
-class Images extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isImageModalOpen: false,
-      currentImage: {},
-      artImages: [],
-      graphicImages: []
-    }
+const Images = ({classes, pageType}) => {
+  const [modalOpen, toggleModal] = React.useState(false)
+  const [currentImage, setCurrentImage] = React.useState({})
+  const [artImages, setArtImages] = React.useState(art)
+  const [graphicImages, setGraphicImages] = React.useState(graphics)
 
-    this.onImageClick = this.onImageClick.bind(this)
-    this.toggleModal = this.toggleModal.bind(this)
-  }
+  React.useEffect(() => {
+    setArtImages(shuffle(art))
+    setGraphicImages(shuffle(graphics))
+  }, [])
 
-  componentDidMount() {
-    const artImages = this.shuffle(art)
-    const graphicImages = this.shuffle(graphics)
-    this.setState({
-      artImages,
-      graphicImages
-    })
-  }
-
-  onImageClick(event, images) {
-    let currentImage = images.filter(image => {
+  const onImageClick = (event, images) => {
+    const activeImage = images.filter(image => {
       if (event.target.src.includes(image.url)) return image
     })
-    this.setState({currentImage: currentImage[0]})
-    this.toggleModal()
-  }
-
-  toggleModal = () => {
-    this.setState({isImageModalOpen: !this.state.isImageModalOpen})
-  }
-
-  shuffle(array) {
-    const newArray = array.slice()
-    let currentIndex = newArray.length
-    let tempValue
-    let randomIndex
-
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex -= 1
-
-      tempValue = newArray[currentIndex]
-      newArray[currentIndex] = newArray[randomIndex]
-      newArray[randomIndex] = tempValue
+    if (activeImage) {
+      setCurrentImage(currentImage[0])
+      toggleModal(!modalOpen)
     }
-
-    return newArray
   }
 
-  render() {
-    const {artImages, graphicImages} = this.state
-    const {classes, pageType} = this.props
+  return (
+    <React.Fragment>
+      <Modal
+        classes={{root: classes.modal}}
+        open={modalOpen}
+        onClose={toggleModal}
+        onClick={toggleModal}
+      >
+        <SingleImage
+          image={currentImage}
+          height={currentImage.height}
+          width={currentImage.width}
+        />
+      </Modal>
 
-    return (
-      <React.Fragment>
-        <Modal
-          classes={{root: classes.modal}}
-          open={this.state.isImageModalOpen}
-          onClose={this.toggleModal}
-          onClick={this.toggleModal}
-        >
-          <SingleImage
-            image={this.state.currentImage}
-            height={this.state.currentImage.height}
-            width={this.state.currentImage.width}
-          />
-        </Modal>
-
-        <StackGrid columnWidth="25%" monitorImagesLoaded="true">
-          {pageType === 'art' &&
-            artImages.map(image => (
-              <div key={image.id}>
-                <img
-                  src={image.url}
-                  className="gallery_item"
-                  onClick={event => this.onImageClick(event, artImages)}
-                />
-              </div>
-            ))}
-          {pageType === 'graphics' &&
-            graphicImages.map(image => (
-              <div key={image.id}>
-                <img
-                  src={image.url}
-                  className="gallery_item"
-                  onClick={event => this.onImageClick(event, graphicImages)}
-                />
-              </div>
-            ))}
-        </StackGrid>
-      </React.Fragment>
-    )
-  }
+      <StackGrid columnWidth="25%" monitorImagesLoaded="true">
+        {pageType === 'art' &&
+          artImages.map(image => (
+            <div key={image.id}>
+              <img
+                src={image.url}
+                className="gallery_item"
+                onClick={event => onImageClick(event, artImages)}
+              />
+            </div>
+          ))}
+        {pageType === 'graphics' &&
+          graphicImages.map(image => (
+            <div key={image.id}>
+              <img
+                src={image.url}
+                className="gallery_item"
+                onClick={event => onImageClick(event, graphicImages)}
+              />
+            </div>
+          ))}
+      </StackGrid>
+    </React.Fragment>
+  )
 }
 
 const styles = () => {
