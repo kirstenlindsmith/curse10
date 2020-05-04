@@ -1,5 +1,5 @@
 html {
-  cursor: url(assets/cursor.png), auto;
+  cursor: url(public/assets/cursor.png), auto;
   overflow-x: hidden;
   font-family: 'Crimson Text', serif;
 }
@@ -9,7 +9,7 @@ html {
 }
 
 button {
-  cursor: url(assets/cursorHover.png), auto !important;
+  cursor: url(public/assets/cursorHover.png), auto !important;
 }
 
 html::-webkit-scrollbar-track {
@@ -32,7 +32,7 @@ html::-webkit-scrollbar-thumb {
     color-stop(0.5, #f049ff),
     color-stop(0.7, #c156ff)
   ) !important;
-  cursor: url(assets/cursorHover.png), auto !important;
+  cursor: url(public/assets/cursorHover.png), auto !important;
 }
 
 div::-webkit-scrollbar-track {
@@ -120,7 +120,7 @@ nav.bm-item-list {
   background: rgb(0, 0, 0, 0) !important;
   font-family: 'Dancing Script', cursive;
   text-transform: lowercase;
-  cursor: url(assets/cursorHover.png), auto !important;
+  cursor: url(public/assets/cursorHover.png), auto !important;
 }
 
 .bm-item:focus {
@@ -140,7 +140,7 @@ nav.bm-item-list {
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  cursor: url(assets/cursor.png), auto !important;
+  cursor: url(public/assets/cursor.png), auto !important;
 }
 
 #nav .navWrapper {
@@ -166,12 +166,12 @@ nav.bm-item-list {
 }
 
 a {
-  cursor: url(assets/cursorHover.png), auto;
+  cursor: url(public/assets/cursorHover.png), auto;
 }
 
 #nav a {
   color: black;
-  cursor: url(assets/cursorHover.png), auto;
+  cursor: url(public/assets/cursorHover.png), auto;
 }
 
 p {
