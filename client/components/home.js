@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Home = () => (
   <div className="container" id="home-div">
     <div id="homeContents">
       <h1 className="title">Hi,</h1>
-      <img className="home-img" src="/assets/kirsten.png" />
+      <img className="home-img" src="/public/assets/kirsten.png" />
       <br />
       <p>
         Hi! My name is Kirsten (pronounced "curse ten"), and I'm a full stack
