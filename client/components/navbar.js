@@ -7,8 +7,8 @@ const Navbar = () => (
       <div className="navWrapper">
         <div className="container">
           <a href="/" id="logo">
-            <img id="name" src="/assets/kirstenLogo.png" />
-            <img id="definition" src="/assets/definition.png" />
+            <img id="name" src="/public/assets/kirstenLogo.png" />
+            <img id="definition" src="/public/assets/definition.png" />
           </a>
         </div>
       </div>
