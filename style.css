@@ -8,7 +8,10 @@ html {
   display: none;
 }
 
-button {
+button,
+button:hover,
+a,
+a:hover {
   cursor: url(public/assets/cursorHover.png), auto !important;
 }
 
