@@ -120,15 +120,7 @@ nav.bm-item-list {
 }
 
 .bm-item a:hover {
-  background: rgb(0, 0, 0, 0) !important;
-  font-family: 'Dancing Script', cursive;
-  text-transform: lowercase;
   cursor: url(public/assets/cursorHover.png), auto !important;
-}
-
-.bm-item:focus {
-  border: none;
-  outline: 0;
 }
 
 .bm-overlay {
