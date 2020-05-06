@@ -6,25 +6,25 @@ const contactMethods = [
     id: 1,
     name: 'Github',
     url: 'https://github.com/kirstenlindsmith',
-    image: '/public/assets/github.png'
+    image: '/assets/github.png'
   },
   {
     id: 2,
     name: 'LinkedIn',
     url: 'https://linkedin.com/in/kirstenlindsmith',
-    image: '/public/assets/linkedIn.png'
+    image: '/assets/linkedIn.png'
   },
   {
     id: 3,
     name: 'AngelList',
     url: 'https://angel.co/kirsten-lindsmith',
-    image: '/public/assets/angelList.png'
+    image: '/assets/angelList.png'
   },
   {
     id: 4,
     name: 'Instagram',
     url: 'https://www.instagram.com/durrsten/',
-    image: '/public/assets/instagram.png'
+    image: '/assets/instagram.png'
   }
 ]
 
@@ -54,7 +54,7 @@ const Contact = () => (
           a
           href="mailto:kirstenlindsmith@gmail.com?Subject=Website Contact"
         >
-          <img src="/public/assets/envelope.png" />
+          <img src="/assets/envelope.png" />
         </a>
         {contactMethods.map(item => (
           <a key={item.id} id={item.name} href={item.url}>

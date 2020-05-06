@@ -5,7 +5,7 @@ const Home = () => (
   <div className="container" id="home-div">
     <div id="homeContents">
       <h1 className="title">Hi,</h1>
-      <img className="home-img" src="/public/assets/kirsten.png" />
+      <img className="home-img" src="/assets/kirsten.png" />
       <br />
       <p>
         Hi! My name is Kirsten (pronounced "curse ten"), and I'm a full stack
@@ -13,7 +13,7 @@ const Home = () => (
       </p>
 
       <p>
-        Once upon a time, I was a special ed teacher and graphic designer who
+        Once upon a time, I was a special education teacher and graphic designer who
         fell in love with programming. I have a natural love of detail, a deep
         appreciation for beautiful things, and an obsessive need to organize the
         world around me, so learning to code was like meeting a soulmate.

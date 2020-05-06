@@ -1,0 +1,31 @@
+.hamburger-icon {
+  margin: 10px;
+  width: 40px;
+}
+
+.hamburger-icon:after, 
+.hamburger-icon:before, 
+.hamburger-icon div {
+  background-color: #333;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 5px;
+  margin: 7px 0;
+  transition: all .2s ease-in-out;
+}
+
+.hamburger-icon:hover:before,
+.hamburger-icon:focus:before {
+  transform: translateY(12px) rotate(135deg);
+}
+
+.hamburger-icon:hover:after,
+.hamburger-icon:focus:after {
+  transform: translateY(-12px) rotate(-135deg);
+}
+
+.hamburger-icon:hover div,
+.hamburger-icon:focus div {
+  transform: scale(0);
+}
