@@ -1,18 +1,15 @@
 import React from 'react'
-import Hamburger from './hamburger'
+import Hamburger from '../Hamburger'
+import './navbar-style.css'
 
 const Navbar = () => (
-  <div id="entireNav">
-    <div id="nav">
-      <div className="navWrapper">
-        <div className="container">
+  <div className="nav-container">
+        <div className="home-logo">
           <a href="/" id="logo">
             <img id="name" src="/assets/kirstenLogo.png" />
             <img id="definition" src="/assets/definition.png" />
           </a>
         </div>
-      </div>
-    </div>
 
     <Hamburger />
   </div>

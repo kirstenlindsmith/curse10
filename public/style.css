@@ -1,5 +1,5 @@
 html {
-  cursor: url(public/assets/cursor.png), auto;
+  cursor: url(assets/cursor.png), auto;
   overflow-x: hidden;
   font-family: 'Crimson Text', serif;
 }
@@ -12,7 +12,7 @@ button,
 button:hover,
 a,
 a:hover {
-  cursor: url(public/assets/cursorHover.png), auto !important;
+  cursor: url(assets/cursorHover.png), auto !important;
 }
 
 html::-webkit-scrollbar-track {
@@ -35,7 +35,7 @@ html::-webkit-scrollbar-thumb {
     color-stop(0.5, #f049ff),
     color-stop(0.7, #c156ff)
   ) !important;
-  cursor: url(public/assets/cursorHover.png), auto !important;
+  cursor: url(assets/cursorHover.png), auto !important;
 }
 
 div::-webkit-scrollbar-track {
@@ -60,113 +60,8 @@ div::-webkit-scrollbar-thumb {
   ) !important;
 }
 
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 36px;
-}
-
-.bm-burger-bars {
-  background: #373a47;
-  border-radius: 10%;
-  height: 3px !important;
-}
-
-.bm-burger-bars-hover {
-  background: #a90000;
-}
-
-nav.bm-item-list {
-  background: #e48fc2;
-  display: flex;
-  flex-direction: column;
-  height: 450px !important;
-  width: 475px !important;
-  margin-top: -50px;
-  overflow-y: hidden !important;
-  border-radius: 50%;
-}
-
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-}
-
-.bm-menu {
-  background: rbg(0, 0, 0, 0);
-  padding: 2em 1em 2em;
-  font-size: 1.15em;
-  text-transform: uppercase;
-  height: 400px !important;
-}
-
-.bm-morph-shape {
-  fill: white;
-  height: 400px !important;
-  opacity: 0 !important;
-}
-
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
-}
-
-.bm-item {
-  display: inline-block;
-  margin-left: 100px !important;
-  margin-top: 10px !important;
-}
-
-.bm-item a:hover {
-  cursor: url(public/assets/cursorHover.png), auto !important;
-}
-
-.bm-overlay {
-  background: #e48fc2;
-}
-
-.contactHoverMenu {
-  display: block;
-}
-
-#nav {
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  cursor: url(public/assets/cursor.png), auto !important;
-}
-
-#nav .navWrapper {
-  display: flex;
-  justify-content: flex-start;
-}
-
-#logo {
-  display: flex;
-  flex-direction: column;
-  margin-left: -55px;
-}
-
-#name {
-  max-width: 16rem;
-  margin-top: 0.5rem;
-}
-
-#definition {
-  height: 2.5rem !important;
-  width: 37rem;
-  margin: 0 !important;
-}
-
 a {
-  cursor: url(public/assets/cursorHover.png), auto;
-}
-
-#nav a {
-  color: black;
-  cursor: url(public/assets/cursorHover.png), auto;
+  cursor: url(assets/cursorHover.png), auto;
 }
 
 p {
