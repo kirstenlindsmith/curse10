@@ -27,7 +27,22 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }
+      },
+        {
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'url?limit=10000&mimetype=image/svg+xml',
+          },
+        },
+        {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ]
   }
 }

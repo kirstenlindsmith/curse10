@@ -154,6 +154,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _hamburger_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hamburger-style.css */ "./client/components/Hamburger/hamburger-style.css");
 /* harmony import */ var _hamburger_style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_hamburger_style_css__WEBPACK_IMPORTED_MODULE_2__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -195,22 +197,113 @@ var Hamburger = function Hamburger() {
 
   var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
-      hovering = _React$useState4[0],
-      setHovering = _React$useState4[1];
+      renderMenu = _React$useState4[0],
+      setRenderMenu = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState("tag-wobble"),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
-      tagClass = _React$useState6[0],
-      setTagClass = _React$useState6[1];
+      derenderMenu = _React$useState6[0],
+      setDerenderMenu = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(''),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      lookingAt = _React$useState8[0],
+      lookAt = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState("tag-wobble"),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      tagClass = _React$useState10[0],
+      setTagClass = _React$useState10[1]; //replay animation on toggle menu
+
 
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
-    setInterval(function () {
-      setTagClass('');
-      setTimeout(function () {
-        return setTagClass("tag-wobble");
-      }, 3000);
-    }, 3000);
-  }, []);
+    setTagClass('');
+    setTimeout(function () {
+      return setTagClass("wobble-instant");
+    }, 20);
+    setTimeout(function () {
+      return setTagClass("wobble-loop");
+    }, 8500);
+  }, [menuOpen]); //handles on click or enter key
+
+  var toggleMenu = function toggleMenu(turnOn) {
+    if (turnOn) {
+      setMenuOpen(true);
+      clearTimeout(derenderMenu);
+    } else {
+      setMenuOpen(false);
+      var toggleDerender = setTimeout(function () {
+        return setRenderMenu(false);
+      }, 8000);
+      setDerenderMenu(toggleDerender);
+    }
+  }; //handles on focus or hover
+
+
+  var handleMenuButtonInteract = function handleMenuButtonInteract(engaging) {
+    //pre-render menu when the user hovers/focuses on the button
+    if (engaging && !renderMenu) {
+      setRenderMenu(true);
+      clearTimeout(derenderMenu);
+    } else if (!engaging && renderMenu && !menuOpen) {
+      //if they disengage without opening the menu, de-render
+      var interactDerender = setTimeout(function () {
+        return setRenderMenu(false);
+      }, 4000);
+      setDerenderMenu(interactDerender);
+    } //if the menu is already open, handle hover/focus effect
+
+
+    if (menuOpen && renderMenu) {
+      if (engaging) lookAt('menuButton');else lookAt('');
+    }
+  };
+
+  var generateEyeMotionProps = function generateEyeMotionProps(target) {
+    return {
+      onMouseEnter: function onMouseEnter() {
+        return lookAt(target);
+      },
+      // onMouseLeave: () => lookAt(''),
+      onFocus: function onFocus() {
+        console.log(target);
+        lookAt(target);
+      } // onBlur: () => lookAt('')
+
+    };
+  };
+
+  var pupilHeight = function pupilHeight() {
+    switch (lookingAt) {
+      case 'menuButton':
+        return '5px';
+
+      case 'tag':
+        return '28px';
+
+      case 'home':
+        return '28px';
+
+      case 'code':
+        return '30px';
+
+      case 'art':
+        return '32px';
+
+      case 'graphics':
+        return '34px';
+
+      case 'blog':
+        return '36px';
+
+      case 'contact':
+        return '38px';
+
+      default:
+        return '20px';
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "hamburger-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -219,24 +312,25 @@ var Hamburger = function Hamburger() {
     "aria-label": "toggle hamburger menu",
     tabIndex: 0,
     onMouseEnter: function onMouseEnter() {
-      return setHovering(true);
+      return handleMenuButtonInteract(true);
     },
     onMouseLeave: function onMouseLeave() {
-      return setHovering(false);
+      return handleMenuButtonInteract(false);
     },
     onFocus: function onFocus() {
-      return setHovering(true);
+      return handleMenuButtonInteract(true);
     },
     onBlur: function onBlur() {
-      return setHovering(false);
+      return handleMenuButtonInteract(false);
     },
     onClick: function onClick() {
-      return setMenuOpen(!menuOpen);
+      return toggleMenu(!menuOpen);
     },
     onKeyDown: function onKeyDown(e) {
-      if (e.key && e.key === "Enter") setMenuOpen(!menuOpen);
+      if (e.key && e.key === "Enter") toggleMenu(!menuOpen);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), renderMenu && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "aria-hidden": !menuOpen,
     className: "hamburger-menu ".concat(menuOpen ? 'slide-left' : '')
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cat-neck right-neck"
@@ -249,11 +343,17 @@ var Hamburger = function Hamburger() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cat-eye right-eye"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "pupil ".concat(hovering ? 'eye-look' : '')
+    style: {
+      top: pupilHeight()
+    },
+    className: "pupil"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cat-eye left-eye"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "pupil ".concat(hovering ? 'eye-look' : '')
+    style: {
+      top: pupilHeight()
+    },
+    className: "pupil"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cat-nose"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -266,10 +366,36 @@ var Hamburger = function Hamburger() {
     className: "mouth-closed-right"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mouth-closed-left"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tag-container",
+    onMouseEnter: function onMouseEnter() {
+      return lookAt('tag');
+    },
+    onMouseLeave: function onMouseLeave() {
+      return lookAt('');
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tag-string"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "".concat(tagClass, " menu-tag"),
     id: "menu-tag"
-  }))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], _extends({
+    to: "/"
+  }, generateEyeMotionProps('home')), "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], _extends({
+    to: "/projects"
+  }, generateEyeMotionProps('code')), "Code")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], _extends({
+    to: "/art"
+  }, generateEyeMotionProps('art')), "Art")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], _extends({
+    to: "/graphics"
+  }, generateEyeMotionProps('graphics')), "Graphics")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", _extends({
+    href: "https://kirstenlindsmith.wordpress.com/"
+  }, generateEyeMotionProps('blog'), {
+    title: "(New window) My autism blog on wordpress"
+  }), "Autism Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "*new window")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], _extends({
+    to: "/contact"
+  }, generateEyeMotionProps('contact')), "Contact"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tag-top"
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Hamburger);
@@ -19652,9 +19778,12 @@ module.exports = exports['default'];
 
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../../../public/assets/cursorHover.png */ "./public/assets/cursorHover.png");
 exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, ".hamburger-icon {\n  margin: 10px;\n  width: 50px;\n  padding: 5px;\n  position: absolute;\n  top: 15px;\n  right: 15px;\n  z-index: 10;\n}\n\n.hamburger-icon:after, \n.hamburger-icon:before, \n.hamburger-icon div {\n  background-color: #333;\n  border-radius: 3px;\n  content: '';\n  display: block;\n  height: 5px;\n  margin: 7px 0;\n  transition: all .2s ease-in-out;\n}\n\n.h-open:before {\n  transform: translateY(12px) rotate(135deg);\n}\n\n.h-open:after {\n  transform: translateY(-12px) rotate(-135deg);\n}\n\n.h-open div {\n  transform: scale(0);\n}\n\n.hamburger-menu {\n  height: 400px;\n  width: 400px;\n  border-radius: 50%;\n  background-color: #333;\n  position: absolute;\n  z-index: 1;\n  right: -50px;\n  top: 80px;\n  list-style-type: none;\n  -webkit-font-smoothing: antialiased;\n  transform-origin: 0% 0%;\n  transform: translate(100%, 0);\n  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);\n}\n\n.slide-left {\n  transform: scale(1, 1);\n}\n\n.cat-neck {\n  width: 250px;\n  height: 250px;\n  position: absolute;\n  background-color: #333;\n  right: -100px;\n}\n\n.right-neck {\n  top: 10px;\n  transform: translateY(12px) rotate(175deg);\n}\n\n.left-neck {\n  top: 127px;\n  transform: translateY(12px) rotate(95deg);\n}\n\n.cat-ear {\n  position: absolute;\n  height: 0;\n  width: 0;\n  left: -48px;\n  border-top: 100px solid transparent;\n  border-bottom: 100px solid transparent;\n  border-right: 150px solid #333;\n}\n\n.right-ear {\n  top: 27px\n}\n\n.left-ear {\n  top: 174px;\n}\n\n.cat-eye {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background-color: #d1ff38;\n  position: absolute;\n  left: 100px;\n}\n\n.right-eye {\n  top: 100px;\n}\n\n.left-eye {\n  top: 250px;\n}\n\n.pupil {\n  width: 50px;\n  height: 10px;\n  background-color: #333;\n  border-radius: 50%;\n  position: absolute;\n  top: 20px;\n  transition-property: all;\n\ttransition-duration: .5s;\n\ttransition-timing-function: cubic-bezier(0, 1, 0.5, 1);\n}\n\n.eye-look {\n  top: 5px !important;\n}\n\n.cat-nose {\n  position: absolute;\n  top: 190px;\n  left: 160px;\n  display: flex;\n  align-items: center;\n}\n\n.nose-top {\n  height: 20px;\n  width: 10px;\n}\n\n.nose-base {\n  height: 10px;\n  width: 14px;\n  margin-left: -9px;\n}\n\n.nose-top, .nose-base {\n  border-radius: 50%;\n  background-color: pink\n}\n\n.cat-mouth {\n  position: absolute;\n  top: 157px;\n  left: 170px;\n  display: flex;\n  flex-direction: column;\n  z-index: 10;\n}\n\n.mouth-closed-right {\n  transform: translateY(12px) rotate(25deg);\n}\n\n.mouth-closed-left {\n  transform: translateY(12px) rotate(-25deg);\n}\n\n.mouth-closed-right, .mouth-closed-left {\n  height: 30px;\n  width: 30px;\n  background-color: #333;\n  border-radius: 50%;\n  border-right: 2px solid white;\n}\n\n.cat-tongue {\n  background-color: pink;\n  height: 20px;\n  width: 50px;\n  border-radius: 50%;\n  position: absolute;\n  z-index: 1;\n}\n\n.menu-tag {\n  height: 200px;\n  width: 100px;\n  background-color: red;\n  position: absolute;\n  top: 200px;\n  left: 0;\n}\n\n.tag-wobble {\n\tanimation: wobble 2s 1s both;\n  -webkit-animation: wobble 2s 1s both;\n}\n\n@-webkit-keyframes wobble {\n  0%,\n  100% {\n    -webkit-transform: translateX(0%);\n            transform: translateX(0%);\n    -webkit-transform-origin: 50% 50%;\n            transform-origin: 50% 50%;\n  }\n  15% {\n    -webkit-transform: translateX(-30px) rotate(6deg);\n            transform: translateX(-30px) rotate(6deg);\n  }\n  30% {\n    -webkit-transform: translateX(15px) rotate(-6deg);\n            transform: translateX(15px) rotate(-6deg);\n  }\n  45% {\n    -webkit-transform: translateX(-15px) rotate(3.6deg);\n            transform: translateX(-15px) rotate(3.6deg);\n  }\n  60% {\n    -webkit-transform: translateX(9px) rotate(-2.4deg);\n            transform: translateX(9px) rotate(-2.4deg);\n  }\n  75% {\n    -webkit-transform: translateX(-6px) rotate(1.2deg);\n            transform: translateX(-6px) rotate(1.2deg);\n  }\n}\n@keyframes wobble {\n  0%,\n  100% {\n    -webkit-transform: translateX(0%);\n            transform: translateX(0%);\n    -webkit-transform-origin: 50% 50%;\n            transform-origin: 50% 50%;\n  }\n  15% {\n    -webkit-transform: translateX(-30px) rotate(6deg);\n            transform: translateX(-30px) rotate(6deg);\n  }\n  30% {\n    -webkit-transform: translateX(15px) rotate(-6deg);\n            transform: translateX(15px) rotate(-6deg);\n  }\n  45% {\n    -webkit-transform: translateX(-15px) rotate(3.6deg);\n            transform: translateX(-15px) rotate(3.6deg);\n  }\n  60% {\n    -webkit-transform: translateX(9px) rotate(-2.4deg);\n            transform: translateX(9px) rotate(-2.4deg);\n  }\n  75% {\n    -webkit-transform: translateX(-6px) rotate(1.2deg);\n            transform: translateX(-6px) rotate(1.2deg);\n  }\n}", ""]);
+exports.push([module.i, ".hamburger-container {\n  z-index: 100;\n}\n\n.hamburger-icon {\n  margin: 10px;\n  width: 50px;\n  padding: 5px;\n  position: absolute;\n  top: 15px;\n  right: 15px;\n  z-index: 10;\n}\n\n.hamburger-icon:hover {\n  cursor: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") !important;\n}\n\n.hamburger-icon:after, \n.hamburger-icon:before, \n.hamburger-icon div {\n  background-color: #333;\n  border-radius: 3px;\n  content: '';\n  display: block;\n  height: 5px;\n  margin: 7px 0;\n  transition: all .2s ease-in-out;\n}\n\n.h-open:before {\n  transform: translateY(12px) rotate(135deg);\n}\n\n.h-open:after {\n  transform: translateY(-12px) rotate(-135deg);\n}\n\n.h-open div {\n  transform: scale(0);\n}\n\n.hamburger-menu {\n  height: 400px;\n  width: 400px;\n  border-radius: 50%;\n  background-color: #333;\n  position: absolute;\n  z-index: 1;\n  right: -50px;\n  top: 80px;\n  list-style-type: none;\n  -webkit-font-smoothing: antialiased;\n  transform-origin: 0% 0%;\n  transform: translate(100%, 0);\n  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);\n}\n\n.slide-left {\n  transform: scale(1, 1);\n}\n\n.cat-neck {\n  width: 250px;\n  height: 250px;\n  position: absolute;\n  background-color: #333;\n  right: -100px;\n}\n\n.right-neck {\n  top: 10px;\n  transform: translateY(12px) rotate(175deg);\n}\n\n.left-neck {\n  top: 127px;\n  transform: translateY(12px) rotate(95deg);\n}\n\n.cat-ear {\n  position: absolute;\n  height: 0;\n  width: 0;\n  left: -48px;\n  border-top: 100px solid transparent;\n  border-bottom: 100px solid transparent;\n  border-right: 150px solid #333;\n}\n\n.right-ear {\n  top: 27px\n}\n\n.left-ear {\n  top: 174px;\n}\n\n.cat-eye {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background-color: #d1ff38;\n  position: absolute;\n  left: 100px;\n}\n\n.right-eye {\n  top: 100px;\n}\n\n.left-eye {\n  top: 250px;\n}\n\n.pupil {\n  width: 50px;\n  height: 10px;\n  background-color: #333;\n  border-radius: 50%;\n  position: absolute;\n  top: 20px;\n  transition-property: all;\n\ttransition-duration: .5s;\n\ttransition-timing-function: cubic-bezier(0, 1, 0.5, 1);\n}\n\n.cat-nose {\n  position: absolute;\n  top: 190px;\n  left: 160px;\n  display: flex;\n  align-items: center;\n}\n\n.nose-top {\n  height: 20px;\n  width: 10px;\n}\n\n.nose-base {\n  height: 10px;\n  width: 14px;\n  margin-left: -9px;\n}\n\n.nose-top, .nose-base {\n  border-radius: 50%;\n  background-color: pink\n}\n\n.cat-mouth {\n  position: absolute;\n  top: 157px;\n  left: 170px;\n  display: flex;\n  flex-direction: column;\n  z-index: 10;\n}\n\n.mouth-closed-right {\n  transform: translateY(12px) rotate(25deg);\n}\n\n.mouth-closed-left {\n  transform: translateY(12px) rotate(-25deg);\n}\n\n.mouth-closed-right, .mouth-closed-left {\n  height: 30px;\n  width: 30px;\n  background-color: #333;\n  border-radius: 50%;\n  border-right: 2px solid white;\n}\n\n.cat-tongue {\n  background-color: pink;\n  height: 20px;\n  width: 50px;\n  border-radius: 50%;\n  position: absolute;\n  z-index: 1;\n}\n\n.menu-tag {\n  height: 220px;\n  width: 150px;\n  background: linear-gradient(#db26a5, #dc98bd);\n  box-shadow: 0px 5px 15px rgba(77,77,77,0.2), 0px 1px 5px rgba(77,77,77,0.1);\n  position: absolute;\n  top: 350px;\n  left: 123px;\n  border-radius: 0px 0px 5px 5px;\n}\n\n.wobble-loop{\n\tanimation: wobble 8s 1s both infinite;\n  -webkit-animation: wobble 8s 1s both infinite;\n}\n\n.wobble-instant {\n  animation: wobble 8s both;\n  -webkit-animation: wobble 8s both;\n}\n\n.tag-top {\n  position: absolute;\n  top: -100px;\n  left: 0;\n  height: 0;\n  width: 0;\n  border-top: 50px solid transparent;\n  border-right: 75px solid transparent;\n  border-left: 75px solid transparent;\n  border-bottom: 50px solid #db26a5;\n}\n\n.tag-string {\n  height: 100px;\n  width: 2px;\n  background-color: #db26a6;\n  position: absolute;\n  top: 220px;\n  left: 197px;\n}\n\n.menu-tag ul {\n  margin: 0;\n  padding: 0 20px 15px;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n\n.menu-tag li a {\n  color: white;\n  border-bottom: 1px dotted white;\n}\n\n.menu-tag li p {\n  color: white;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 10px;\n  position: absolute;\n  margin: 0;\n  padding: 0;\n  top: 163px;\n  right: 10px;\n}\n\n.menu-tag li a:hover,\n.menu-tag li a:focus {\n  color: #a3ffd1;\n  border-bottom: 1px solid #a3ffd1;\n}\n\n@keyframes wobble {\n  0%,\n  18% {\n    -webkit-transform: translateX(0%);\n            transform: translateX(0%);\n    -webkit-transform-origin: 50% 50%;\n            transform-origin: 50% 50%;\n  }\n  3% {\n    -webkit-transform: translateX(-17px) rotate(6deg);\n            transform: translateX(-17px) rotate(6deg);\n  }\n  6% {\n    -webkit-transform: translateX(17px) rotate(-6deg);\n            transform: translateX(17px) rotate(-6deg);\n  }\n  9% {\n    -webkit-transform: translateX(-8.5px) rotate(3deg);\n            transform: translateX(-8.5px) rotate(3deg);\n  }\n  13% {\n    -webkit-transform: translateX(5.6px) rotate(-2deg);\n            transform: translateX(5.6px) rotate(-2deg);\n  }\n  17% {\n    -webkit-transform: translateX(-2.8px) rotate(1deg);\n            transform: translateX(-2.8px) rotate(1deg);\n  }\n}\n\n@-webkit-keyframes wobble {\n  0%,\n  18% {\n    -webkit-transform: translateX(0%);\n            transform: translateX(0%);\n    -webkit-transform-origin: 50% 50%;\n            transform-origin: 50% 50%;\n  }\n  3% {\n    -webkit-transform: translateX(-17px) rotate(6deg);\n            transform: translateX(-17px) rotate(6deg);\n  }\n  6% {\n    -webkit-transform: translateX(17px) rotate(-6deg);\n            transform: translateX(17px) rotate(-6deg);\n  }\n  9% {\n    -webkit-transform: translateX(-8.5px) rotate(3deg);\n            transform: translateX(-8.5px) rotate(3deg);\n  }\n  13% {\n    -webkit-transform: translateX(5.6px) rotate(-2deg);\n            transform: translateX(5.6px) rotate(-2deg);\n  }\n  17% {\n    -webkit-transform: translateX(-2.8px) rotate(2deg);\n            transform: translateX(-2.8px) rotate(2deg);\n  }\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -19781,6 +19910,51 @@ function toComment(sourceMap) {
   var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
   return "/*# ".concat(data, " */");
 }
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url.default : url;
+
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
 
 /***/ }),
 
@@ -68764,6 +68938,19 @@ module.exports = function(originalModule) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./public/assets/cursorHover.png":
+/*!***************************************!*\
+  !*** ./public/assets/cursorHover.png ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "91ed08378f5318239d4ef16e55451259.png");
 
 /***/ }),
 
