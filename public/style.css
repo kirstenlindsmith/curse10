@@ -1,5 +1,5 @@
 html {
-  cursor: url(assets/cursor.png), auto;
+  cursor: url(public/assets/cursor.png), auto;
   overflow-x: hidden;
   font-family: 'Crimson Text', serif;
 }
@@ -12,7 +12,7 @@ button,
 button:hover,
 a,
 a:hover {
-  cursor: url(assets/cursorHover.png), auto !important;
+  cursor: url(public/assets/cursorHover.png), auto !important;
 }
 
 html::-webkit-scrollbar-track {
@@ -35,7 +35,7 @@ html::-webkit-scrollbar-thumb {
     color-stop(0.5, #f049ff),
     color-stop(0.7, #c156ff)
   ) !important;
-  cursor: url(assets/cursorHover.png), auto !important;
+  cursor: url(public/assets/cursorHover.png), auto !important;
 }
 
 div::-webkit-scrollbar-track {
@@ -61,7 +61,7 @@ div::-webkit-scrollbar-thumb {
 }
 
 a {
-  cursor: url(assets/cursorHover.png), auto;
+  cursor: url(public/assets/cursorHover.png), auto;
 }
 
 p {
