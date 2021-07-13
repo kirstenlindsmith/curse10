@@ -9,7 +9,7 @@ const Home = () => (
       <br />
       <p>
         My name is Kirsten (pronounced "curse ten"), and I'm a frontend
-        software developer.
+        software engineer.
       </p>
 
       <p>
