@@ -8,7 +8,7 @@ const Home = () => (
       <img className="home-img" src="/public/assets/kirsten.png" />
       <br />
       <p>
-        Hi! My name is Kirsten (pronounced "curse ten"), and I'm a full stack
+        Hi! My name is Kirsten (pronounced "curse ten"), and I'm a frontend
         software developer.
       </p>
 
