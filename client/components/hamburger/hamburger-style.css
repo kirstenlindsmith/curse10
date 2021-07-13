@@ -13,7 +13,7 @@
 }
 
 .hamburger-icon:hover {
-  cursor: url(public/assets/cursorHover.png) !important;
+  cursor: url(../../../public/assets/cursorHover.png) !important;
 }
 
 .hamburger-icon:after, 
