@@ -8,7 +8,7 @@ const Home = () => (
       <img className="home-img" src="/public/assets/kirsten.png" />
       <br />
       <p>
-        My name is Kirsten (pronounced "curse ten"), and I'm a frontend
+        My name is Kirsten (pronounced "curse ten"), and I'm a frontend-leaning fullstack
         software engineer.
       </p>
 
@@ -31,12 +31,12 @@ const Home = () => (
       </p>
 
       <p>
-        In my non-coding time I play video games, make art, write and speak
+        In my non-coding time I make art, make and play video games, write and speak
         about autism, and read all types of fantasy.
       </p>
 
       <p>
-        Meatspace me can be found in New York City. Digital me can be found{' '}
+        Meatspace me can be found in Northampton, MA. Digital me can be found{' '}
         <Link to="/contact">here</Link>.
       </p>
 

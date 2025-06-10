@@ -51,13 +51,18 @@ const Contact = () => (
         <a
           className="hoverLink"
           data-clipboard-text="kirstenlindsmith@gmail.com"
-          a
           href="mailto:kirstenlindsmith@gmail.com?Subject=Website Contact"
         >
           <img src="/public/assets/envelope.png" />
         </a>
         {contactMethods.map(item => (
-          <a key={item.id} id={item.name} href={item.url}>
+          <a
+            key={item.id}
+            id={item.name}
+            href={item.url}
+            taret='_blank'
+            rel="noreferrer"
+          >
             <img src={item.image} />
           </a>
         ))}
