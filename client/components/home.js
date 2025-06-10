@@ -20,8 +20,7 @@ const Home = () => (
       </p>
 
       <p>
-        I have a full stack background, including but not limited to: Node,
-        Typescript, Express, PostgreSQL, React, HTML & CSS.
+        I have a full stack background, including but not limited to: React, React Native, Cypress, Next.js, MUI, Node, Express, PostgreSQL, Styled Components, HTML & CSS.
       </p>
 
       <p>
