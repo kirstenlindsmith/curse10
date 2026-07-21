@@ -170,6 +170,8 @@ const Hamburger = () => {
                   href="https://kirstenlindsmith.com/"
                   {...generateEyeMotionProps('blog')}
                   title="(New window) My autism blog on wordpress"
+                  target="_blank"
+                  ref="noreferrer"
                 >
                   Autism Blog
                 </a>
