@@ -1,42 +1,45 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './hamburger-style.css'
 
 const Hamburger = () => {
   const [menuOpen, setMenuOpen] = React.useState(false)
-  const [renderMenu, setRenderMenu] = React.useState(false);
+  const [renderMenu, setRenderMenu] = React.useState(false)
   const [derenderMenu, setDerenderMenu] = React.useState(null)
-  const [lookingAt, lookAt] = React.useState('');
-  const [tagClass, setTagClass] = React.useState("tag-wobble")
+  const [lookingAt, lookAt] = React.useState('')
+  const [tagClass, setTagClass] = React.useState('tag-wobble')
 
   //replay animation on toggle menu
-  React.useEffect(()=>{
-    setTagClass('')
-    setTimeout(() => setTagClass("wobble-instant"), 20)
-    setTimeout(() => setTagClass("wobble-loop"), 8500)
-  }, [menuOpen])
+  React.useEffect(
+    () => {
+      setTagClass('')
+      setTimeout(() => setTagClass('wobble-instant'), 20)
+      setTimeout(() => setTagClass('wobble-loop'), 8500)
+    },
+    [menuOpen]
+  )
 
   //handles on click or enter key
-  const toggleMenu = (turnOn) => {
+  const toggleMenu = turnOn => {
     if (turnOn) {
       setMenuOpen(true)
       clearTimeout(derenderMenu)
     } else {
       setMenuOpen(false)
-      const toggleDerender = setTimeout(()=> setRenderMenu(false), 8000)
+      const toggleDerender = setTimeout(() => setRenderMenu(false), 8000)
       setDerenderMenu(toggleDerender)
     }
   }
 
   //handles on focus or hover
-  const handleMenuButtonInteract = (engaging) => {
+  const handleMenuButtonInteract = engaging => {
     //pre-render menu when the user hovers/focuses on the button
     if (engaging && !renderMenu) {
       setRenderMenu(true)
       clearTimeout(derenderMenu)
     } else if (!engaging && renderMenu && !menuOpen) {
       //if they disengage without opening the menu, de-render
-      const interactDerender = setTimeout(()=> setRenderMenu(false), 4000)
+      const interactDerender = setTimeout(() => setRenderMenu(false), 4000)
       setDerenderMenu(interactDerender)
     }
     //if the menu is already open, handle hover/focus effect
@@ -46,10 +49,13 @@ const Hamburger = () => {
     }
   }
 
-  const generateEyeMotionProps = (target) => ({
+  const generateEyeMotionProps = target => ({
     onMouseEnter: () => lookAt(target),
     // onMouseLeave: () => lookAt(''),
-    onFocus: () => {console.log(target); lookAt(target)},
+    onFocus: () => {
+      console.log(target)
+      lookAt(target)
+    }
     // onBlur: () => lookAt('')
   })
 
@@ -72,14 +78,14 @@ const Hamburger = () => {
       case 'contact':
         return '38px'
       default:
-       return '20px'
+        return '20px'
     }
   }
 
   return (
     <div className="hamburger-container">
       {/* ICON */}
-      <div 
+      <div
         className={`hamburger-icon ${menuOpen ? 'h-open' : 'h-closed'}`}
         role="button"
         aria-label="toggle hamburger menu"
@@ -89,8 +95,8 @@ const Hamburger = () => {
         onFocus={() => handleMenuButtonInteract(true)}
         onBlur={() => handleMenuButtonInteract(false)}
         onClick={() => toggleMenu(!menuOpen)}
-        onKeyDown={(e) => {
-          if (e.key && e.key==="Enter") toggleMenu(!menuOpen)
+        onKeyDown={e => {
+          if (e.key && e.key === 'Enter') toggleMenu(!menuOpen)
         }}
       >
         <div />
@@ -99,94 +105,79 @@ const Hamburger = () => {
       {/* MENU */}
       {renderMenu && (
         <div
-          aria-hidden={!menuOpen} 
+          aria-hidden={!menuOpen}
           className={`hamburger-menu ${menuOpen ? 'slide-left' : ''}`}
         >
-          <div className="cat-neck right-neck"/>
-          <div className="cat-neck left-neck"/>
+          <div className="cat-neck right-neck" />
+          <div className="cat-neck left-neck" />
 
-          <div className="cat-ear right-ear"/>
-          <div className="cat-ear left-ear"/>
+          <div className="cat-ear right-ear" />
+          <div className="cat-ear left-ear" />
 
           <div className="cat-eye right-eye">
-            <div style={{top: pupilHeight()}} className='pupil'/>
+            <div style={{top: pupilHeight()}} className="pupil" />
           </div>
           <div className="cat-eye left-eye">
-            <div style={{top: pupilHeight()}} className='pupil'/>
+            <div style={{top: pupilHeight()}} className="pupil" />
           </div>
 
           <div className="cat-nose">
-            <div className="nose-top"/>
-            <div className="nose-base"/>
+            <div className="nose-top" />
+            <div className="nose-base" />
           </div>
 
           <div className="cat-mouth">
-            <div className="mouth-closed-right"/>
-            <div className="mouth-closed-left"/>
+            <div className="mouth-closed-right" />
+            <div className="mouth-closed-left" />
           </div>
 
-        <div
-          className="tag-container"
-          onMouseEnter={() => lookAt('tag')}
-          onMouseLeave={() => lookAt('')}
-        >
-          <div className="tag-string"/>
-          <div className={`${tagClass} menu-tag`} id="menu-tag">
-            <ul>
-              <li>
-                <Link 
-                  to="/"
-                  {...generateEyeMotionProps('home')}
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/projects"
-                  {...generateEyeMotionProps('code')}
-                >
-                  Code
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/art"
-                  {...generateEyeMotionProps('art')}
-                >
-                  Art
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/graphics"
-                  {...generateEyeMotionProps('graphics')}
-                >
-                  Graphics
-                </Link>
-              </li>
-              <li>
-                <a 
-                  href="https://kirstenlindsmith.com/"
-                  {...generateEyeMotionProps('blog')}
-                  title="(New window) My autism blog on wordpress"
-                  target="_blank"
-                  ref="noreferrer"
-                >
-                  Autism Blog
-                </a>
-                <p>*new window</p>
-              </li>
-              <li>
-                <Link 
-                  to="/contact"
-                  {...generateEyeMotionProps('contact')}
-                >
-                  Contact
-                </Link>
+          <div
+            className="tag-container"
+            onMouseEnter={() => lookAt('tag')}
+            onMouseLeave={() => lookAt('')}
+          >
+            <div className="tag-string" />
+            <div className={`${tagClass} menu-tag`} id="menu-tag">
+              <ul>
+                <li>
+                  <Link to="/" {...generateEyeMotionProps('home')}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/projects" {...generateEyeMotionProps('code')}>
+                    Code
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/art" {...generateEyeMotionProps('art')}>
+                    Art
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/graphics" {...generateEyeMotionProps('graphics')}>
+                    Graphics
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://kirstenlindsmith.com/"
+                    {...generateEyeMotionProps('blog')}
+                    title="(New window) My autism blog on wordpress"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Autism Blog
+                  </a>
+                  <p>*new window</p>
+                </li>
+                <li>
+                  <Link to="/contact" {...generateEyeMotionProps('contact')}>
+                    Contact
+                  </Link>
 
-                {/* WIP CODE: trying to get drop down link for contact */}
-                {/* <div className='dropdown'>
+                  {/* WIP CODE: trying to get drop down link for contact */}
+                  {/* <div className='dropdown'>
                   <a href='#' className='dropLink'>
                     Contact
                   </a>
@@ -205,11 +196,11 @@ const Hamburger = () => {
                     </ul>
                   </div>
                 </div> */}
-              </li>
-            </ul>
-          <div className="tag-top"/>
+                </li>
+              </ul>
+              <div className="tag-top" />
+            </div>
           </div>
-        </div>
           {/* <div className="cat-tongue"/> */}
 
           {/* <ul id="menu">
@@ -237,7 +228,7 @@ const Hamburger = () => {
               <Link to="/contact">Contact</Link>
 
               {/* WIP CODE: trying to get drop down link for contact */}
-              {/* <div className='dropdown'>
+          {/* <div className='dropdown'>
                 <a href='#' className='dropLink'>
                   Contact
                 </a>
@@ -256,7 +247,7 @@ const Hamburger = () => {
                   </ul>
                 </div>
               </div> */}
-            {/* </li>
+          {/* </li>
           </ul> */}
         </div>
       )}
