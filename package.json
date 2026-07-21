@@ -8,10 +8,9 @@
   "main": "index.js",
   "homepage": "curse10.dev",
   "scripts": {
-    "build": "webpack",
-    "build-watch": "webpack -w",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d public",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
+    "build-watch": "NODE_OPTIONS=--openssl-legacy-provider webpack -w",
+    "deploy": "script/deploy-pages",
     "heroku-token": "script/encrypt-heroku-auth-token",
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint-fix": "npm run lint -- --fix",
