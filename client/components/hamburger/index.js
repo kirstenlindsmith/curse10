@@ -1,25 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './hamburger-style.css'
-// import {elastic as Burger} from 'react-burger-menu'
-
-// const contactMethods = [
-//   {
-//     id: 1,
-//     name: 'Github',
-//     url: 'https://github.com/kirstenlindsmith'
-//   },
-//   {
-//     id: 2,
-//     name: 'LinkedIn',
-//     url: 'https://linkedin.com/in/kirstenlindsmith'
-//   },
-//   {
-//     id: 3,
-//     name: 'AngelList',
-//     url: 'https://angel.co/kirsten-lindsmith'
-//   }
-// ]
 
 const Hamburger = () => {
   const [menuOpen, setMenuOpen] = React.useState(false)
@@ -186,7 +167,7 @@ const Hamburger = () => {
               </li>
               <li>
                 <a 
-                  href="https://kirstenlindsmith.wordpress.com/"
+                  href="https://kirstenlindsmith.com/"
                   {...generateEyeMotionProps('blog')}
                   title="(New window) My autism blog on wordpress"
                 >
