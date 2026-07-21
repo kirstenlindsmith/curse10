@@ -136,6 +136,12 @@ img.home-img {
   text-align: center;
 }
 
+.caption {
+  margin: 4px 0 0;
+  padding-left: 2rem;
+  font-size: 0.875rem;
+}
+
 .contact h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 5rem;

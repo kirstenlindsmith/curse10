@@ -133,7 +133,29 @@ img.home-img {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  align-items: center;
   text-align: center;
+}
+
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.coming-soon-text {
+  opacity: 0.75;
+  z-index: 100;
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.caption {
+  margin: 0;
+  font-size: 0.875rem;
 }
 
 .contact h1 {
