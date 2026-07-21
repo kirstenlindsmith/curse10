@@ -6,26 +6,20 @@ const contactMethods = [
     id: 1,
     name: 'Github',
     url: 'https://github.com/kirstenlindsmith',
-    image: '/public/assets/github.png'
+    image: '/public/assets/github.png',
   },
   {
     id: 2,
     name: 'LinkedIn',
     url: 'https://linkedin.com/in/kirstenlindsmith',
-    image: '/public/assets/linkedIn.png'
+    image: '/public/assets/linkedIn.png',
   },
   {
     id: 3,
-    name: 'AngelList',
-    url: 'https://angel.co/kirsten-lindsmith',
-    image: '/public/assets/angelList.png'
-  },
-  {
-    id: 4,
     name: 'Instagram',
     url: 'https://www.instagram.com/durrsten/',
-    image: '/public/assets/instagram.png'
-  }
+    image: '/public/assets/instagram.png',
+  },
 ]
 
 const Contact = () => (
@@ -55,12 +49,12 @@ const Contact = () => (
         >
           <img src="/public/assets/envelope.png" />
         </a>
-        {contactMethods.map(item => (
+        {contactMethods.map((item) => (
           <a
             key={item.id}
             id={item.name}
             href={item.url}
-            taret='_blank'
+            taret="_blank"
             rel="noreferrer"
           >
             <img src={item.image} />
